@@ -10,6 +10,12 @@ config_version=5
 
 [application]
 
-config/name="TheCellar"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/name="cellar"
+config/tags=PackedStringArray("current")
+run/main_scene="res://NetworkingServer.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
