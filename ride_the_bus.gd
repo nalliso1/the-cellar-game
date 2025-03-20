@@ -26,23 +26,22 @@ func _ready() -> void:
 				  {"cardScene": -1, "suit" : -1, "number" : -1},
 				  {"cardScene": -1, "suit" : -1, "number" : -1}]
 	
-	currentRun = emptyRun.duplicate()
+	currentRun = emptyRun.duplicate(true)
+	
+	print("empty run: %s" %str(emptyRun))
+	print("currentRun run: %s" %str(currentRun))
+	
 	questionNumber = 1
 	getAllCardImagePaths()	
 	redOrBlack()
-	
-	#updateGameState()
-
 
 
 
 func updateGameState(): 
-
 	createCard()
 	#set card details
 	setCardDetails()
-	print(currentRun)
-	print(questionNumber)
+
 	
 	
 	
@@ -64,7 +63,13 @@ func disableButtons(on):
 
 func niceTryAnimation():
 	pass
-
+	
+func wait(seconds: float) -> void:
+	print("waiting %s seconds" %str(seconds))
+	await get_tree().create_timer(seconds).timeout
+	print("done waiting %s seconds" %str(seconds))
+	
+	
 func getAllCardImagePaths(): 
 	cardImagePaths = []	
 	var directory = DirAccess.open("res://materials/cardImages") 
@@ -78,7 +83,7 @@ func getAllCardImagePaths():
 		currentPath = directory.get_next()
 	
 	directory.list_dir_end()
-	print(cardImagePaths)
+
 
 func setCardDetails():
 	cardImagePathsLength = cardImagePaths.size()
@@ -86,28 +91,33 @@ func setCardDetails():
 	if cardImagePathsLength == 0: 
 		loser()
 	
-	print(cardImagePathsLength)
+	#print("cards in deck %s" %cardImagePathsLength)
 	var rng = RandomNumberGenerator.new()		
 	var randomVal = rng.randi_range(0,cardImagePathsLength -1)	
 	var curCardImagePath = cardImagePaths[randomVal]
 	
 	cardImagePaths.erase(curCardImagePath)
 	
-	print(curCardImagePath)
+	#print("current card image path %s" %curCardImagePath)
 	
 	var suitChar = curCardImagePath.substr(0,1)
 	var num = int(curCardImagePath.substr(1,3))
 	currentRun[questionNumber -1]["suit"] = suitChar
 	currentRun[questionNumber -1]["number"] = num
 	
-	var str = str("res://materials/cardImages/" + curCardImagePath)
+	
+	var fullCardPath = str("res://materials/cardImages/" + curCardImagePath)
 
 	
 	var frontOfCurCard = currentRun[questionNumber -1]["cardScene"].get_node("FrontOfCard")
-	frontOfCurCard.texture = load(str)
+	frontOfCurCard.texture = load(fullCardPath)
+	
+	
 	
 	var backOfCurCard = currentRun[questionNumber -1]["cardScene"].get_node("BackOfCard")
 	backOfCurCard.visible = false
+	
+
 	
 	
 func createCard():
@@ -130,6 +140,8 @@ func createCard():
 	currentRun[questionNumber - 1]["cardScene"].position.x = 55
 	currentRun[questionNumber - 1]["cardScene"].position.y = 80
 	
+	print("card placed")
+	
 	
 	
 func goodGuess(): 
@@ -139,13 +151,15 @@ func badGuess():
 	$VBoxContainer/OptionLabel.text = "get em next time..."
 	
 func resetRun(round):
-	print("in reset run")
+
 	badGuess()
-	questionNumber = 0
+	questionNumber = 0	
 	var placementPath 
+	disableButtons(true)
+	await get_tree().create_timer(1.5).timeout
+	disableButtons(false)
 
 	for i in range(round):
-		print(i)
 		match i:
 			0:
 				placementPath = card1Place
@@ -156,25 +170,19 @@ func resetRun(round):
 			3:
 				placementPath = card4Place
 			
-		print("path placement %s" %placementPath)
 		var deleteCard = placementPath.get_node("Card")
-		print("delete card %s" %deleteCard)
-
+		placementPath.remove_child(deleteCard)
 		deleteCard.queue_free()
-		print(placementPath.get_children())
-		
-	currentRun = emptyRun.duplicate()
-	print(currentRun)
 	
+	print("card deleted")
+	currentRun = emptyRun.duplicate(true)	
 	redOrBlack()
 
 func _on_button_2_pressed() -> void:
 	
 	updateGameState()
-	
-	print(questionNumber)
-	
 
+	
 	match questionNumber:
 		1: 
 			if currentRun[0]["suit"] == "h" or currentRun[0]["suit"] == "d":
@@ -182,7 +190,7 @@ func _on_button_2_pressed() -> void:
 			else:
 				resetRun(1)	
 		2:
-			if currentRun[2]["number"] > currentRun[1]["number"]:
+			if currentRun[1]["number"] > currentRun[0]["number"]:
 				insideOrOutside()
 			else:
 				resetRun(2)
@@ -212,6 +220,7 @@ func _on_button_2_pressed() -> void:
 func _on_button_3_pressed() -> void:
 	
 	updateGameState()
+	
 	match questionNumber:
 		1: 
 			if currentRun[0]["suit"] == "s" or currentRun[0]["suit"] == "c":
@@ -219,7 +228,7 @@ func _on_button_3_pressed() -> void:
 			else:
 				resetRun(1)	
 		2:
-			if currentRun[2]["number"] < currentRun[1]["number"]:
+			if currentRun[1]["number"] < currentRun[0]["number"]:
 				insideOrOutside()
 			else:
 				resetRun(2)
@@ -238,13 +247,11 @@ func _on_button_3_pressed() -> void:
 	
 	questionNumber += 1
 
-
-
-
 #thers buttons are only used in the last question pickASuit
 func _on_button1_pressed() -> void:
 	
 	updateGameState()
+
 	if questionNumber == 4 and currentRun[3]["suit"] == "h": 
 		winner()
 	else:
@@ -254,6 +261,7 @@ func _on_button1_pressed() -> void:
 
 func _on_button_4_pressed() -> void:
 	updateGameState()
+
 	
 	if questionNumber == 4 and currentRun[3]["suit"] == "c": 
 		winner()	
@@ -274,6 +282,7 @@ func _on_button_4_pressed() -> void:
 
 func redOrBlack(): 
 	print("in red or black")
+	print(currentRun)
 	button1.visible = false
 	button2.visible = true
 	button3.visible = true
