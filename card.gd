@@ -1,8 +1,5 @@
 extends Node2D
 
-#type of game
-#array of cards
-
 
 
 # Called when the node enters the scene tree for the first time.

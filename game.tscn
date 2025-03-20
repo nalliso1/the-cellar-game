@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2n4a3p5r2o8y"]
+[gd_scene load_steps=3 format=3 uid="uid://d2n4a3p5r2o8y"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_awibw"]
+[ext_resource type="Texture2D" uid="uid://cx6fhdmu0draj" path="res://materials/greenFeltBackground.jpg" id="2_hjnur"]
 
-[node name="Game" type="Node2D"]
+[node name="game" type="Node2D"]
 script = ExtResource("1_awibw")
+
+[node name="background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1024, 480)
+offset_right = 767.0
+offset_bottom = 417.0
+texture = ExtResource("2_hjnur")
