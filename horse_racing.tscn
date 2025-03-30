@@ -1,0 +1,475 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct8x8l518j6i0"]
+
+[ext_resource type="Script" path="res://horse_racing.gd" id="1_k7d70"]
+[ext_resource type="Texture2D" uid="uid://cx6fhdmu0draj" path="res://materials/greenFeltBackground.jpg" id="2_0ymoe"]
+[ext_resource type="Texture2D" uid="uid://du5drv7o5ats4" path="res://materials/finishline.jpg" id="3_w7ugy"]
+[ext_resource type="StyleBox" uid="uid://b0svsfflfwkox" path="res://materials/emptyCardBackground.tres" id="4_gldtk"]
+[ext_resource type="Texture2D" uid="uid://t5mupt835am6" path="res://materials/woodGrainColor.jpg" id="5_tfhlv"]
+[ext_resource type="StyleBox" uid="uid://b05cwai7a8df1" path="res://materials/buttonTexture.tres" id="6_e78jd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xn0l"]
+bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_30xre"]
+texture = ExtResource("5_tfhlv")
+modulate_color = Color(0.577008, 0.577008, 0.577008, 1)
+
+[node name="horse_racing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k7d70")
+
+[node name="background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1024, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -133.5
+offset_right = 221.0
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ymoe")
+expand_mode = 3
+
+[node name="finishline" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 780.0
+offset_right = 811.0
+offset_bottom = 480.0
+texture = ExtResource("3_w7ugy")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1024, 480)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 4.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="GameControlsContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1024, 80)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+
+[node name="Spacer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(825, 320)
+layout_mode = 2
+alignment = 1
+
+[node name="Lane1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(65, 80)
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+clip_contents = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot5" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot6" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot7" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot8" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot9" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot10" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot11" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot12" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane1"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Lane2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(65, 80)
+layout_mode = 2
+
+[node name="Start" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+clip_contents = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot5" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot6" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot7" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot8" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot9" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot10" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot11" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot12" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane2"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Lane3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(65, 80)
+layout_mode = 2
+
+[node name="Start" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+clip_contents = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot5" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot6" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot7" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot8" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot9" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot10" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot11" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot12" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane3"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Lane4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(65, 80)
+layout_mode = 2
+
+[node name="Start" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+clip_contents = true
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot4" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot5" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot6" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot7" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot8" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot9" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot10" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot11" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="Spot12" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/Lane4"]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_gldtk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectionWindow" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SelectionWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -105.0
+offset_right = 202.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2xn0l")
+
+[node name="Label" type="Label" parent="SelectionWindow/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Select a horse/suit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="SelectionWindow"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -100.0
+offset_right = 375.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button1" type="Button" parent="SelectionWindow/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_30xre")
+theme_override_styles/normal = ExtResource("6_e78jd")
+text = "Heart
+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="SelectionWindow/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_30xre")
+theme_override_styles/normal = ExtResource("6_e78jd")
+text = "Spade"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="SelectionWindow/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_30xre")
+theme_override_styles/normal = ExtResource("6_e78jd")
+text = "Diamond"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="SelectionWindow/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_30xre")
+theme_override_styles/normal = ExtResource("6_e78jd")
+text = "Club"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="SelectionWindow/ButtonContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="SelectionWindow/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="SelectionWindow/ButtonContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="SelectionWindow/ButtonContainer/Button4" to="." method="_on_button_4_pressed"]

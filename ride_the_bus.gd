@@ -150,7 +150,7 @@ func goodGuess():
 func badGuess():
 	$VBoxContainer/OptionLabel.text = "get em next time..."
 	
-func resetRun(round):
+func resetRun(questionNum):
 
 	badGuess()
 	questionNumber = 0	
@@ -159,7 +159,7 @@ func resetRun(round):
 	await get_tree().create_timer(1.5).timeout
 	disableButtons(false)
 
-	for i in range(round):
+	for i in range(questionNum):
 		match i:
 			0:
 				placementPath = card1Place
