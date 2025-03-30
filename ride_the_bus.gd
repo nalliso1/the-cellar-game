@@ -19,6 +19,10 @@ var cardImagePathsLength
 
 var currentRun
 var emptyRun
+
+signal win
+signal lose
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	emptyRun = [{"cardScene": -1, "suit" : -1, "number" : -1},
@@ -30,6 +34,8 @@ func _ready() -> void:
 	
 	print("empty run: %s" %str(emptyRun))
 	print("currentRun run: %s" %str(currentRun))
+	
+	$StartGameSound.play()
 	
 	questionNumber = 1
 	getAllCardImagePaths()	
@@ -47,12 +53,16 @@ func updateGameState():
 	
 func loser():
 	$VBoxContainer/OptionLabel.text = "you ran out of cards"
+	$LoseSound.play()
 	disableButtons(true)
+	lose.emit()
 	
 
 func winner():
 	$VBoxContainer/OptionLabel.text = "winner"
+	$WinSound.play()
 	disableButtons(true)
+	win.emit()
 	
 
 func disableButtons(on):
@@ -156,6 +166,7 @@ func resetRun(questionNum):
 	questionNumber = 0	
 	var placementPath 
 	disableButtons(true)
+	$LoseSound.play()
 	await get_tree().create_timer(1.5).timeout
 	disableButtons(false)
 
@@ -203,7 +214,7 @@ func _on_button_2_pressed() -> void:
 			if currentRun[3]["suit"] == "s":
 				winner()
 			else:
-				niceTryAnimation()
+				niceTryAnimation() 
 				resetRun(4)
 
 	
