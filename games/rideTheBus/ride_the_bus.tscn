@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5v68vp5m5jsq"]
+
+[ext_resource type="Script" path="res://games/rideTheBus/ride_the_bus.gd" id="1_eu82w"]
+[ext_resource type="Texture2D" uid="uid://dmret2ac82nmp" path="res://games/materialsForHorseAndBus/backOfCard.jpg" id="2_0b22l"]
+[ext_resource type="Texture2D" uid="uid://t5mupt835am6" path="res://games/materialsForHorseAndBus/woodGrainColor.jpg" id="2_5ti7a"]
+[ext_resource type="PackedScene" uid="uid://btl45qb7c6jui" path="res://topDownRooms/cellar.tscn" id="2_aoj27"]
+[ext_resource type="Texture2D" uid="uid://cx6fhdmu0draj" path="res://games/materialsForHorseAndBus/greenFeltBackground.jpg" id="2_l40bk"]
+[ext_resource type="StyleBox" uid="uid://b05cwai7a8df1" path="res://games/materialsForHorseAndBus/buttonTexture.tres" id="3_xkqmx"]
+[ext_resource type="AudioStream" uid="uid://bt02k7vx072n7" path="res://games/materialsForHorseAndBus/mixkit-retro-arcade-lose-2027.wav" id="6_o3y3i"]
+[ext_resource type="AudioStream" uid="uid://dmvyeq505stav" path="res://games/materialsForHorseAndBus/mixkit-winning-notification-2018.wav" id="7_5ds4x"]
+[ext_resource type="AudioStream" uid="uid://bpvheqc78tg5r" path="res://games/materialsForHorseAndBus/shuffling-cards-1.mp3" id="8_lfkyb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5nit"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chrbe"]
+size = Vector2(100, 150)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1myj"]
+texture = ExtResource("2_5ti7a")
+modulate_color = Color(0.577008, 0.577008, 0.577008, 1)
+
+[node name="rideTheBus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eu82w")
+prev_scene = ExtResource("2_aoj27")
+
+[node name="background" type="TextureRect" parent="."]
+z_index = -2
+custom_minimum_size = Vector2(1024, 480)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1473.0
+offset_top = -695.0
+offset_right = 1437.25
+offset_bottom = 723.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l40bk")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1024, 480)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="GameControlsContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1024, 80)
+layout_mode = 2
+
+[node name="CardContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1024, 150)
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="Deck" type="PanelContainer" parent="VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5nit")
+
+[node name="DeckSlot" type="Node2D" parent="VBoxContainer/CardContainer/Deck"]
+position = Vector2(50, 75)
+
+[node name="DeckImage" type="Sprite2D" parent="VBoxContainer/CardContainer/Deck/DeckSlot"]
+position = Vector2(5, 5)
+scale = Vector2(0.41841, 0.428161)
+texture = ExtResource("2_0b22l")
+
+[node name="Area2D" type="Area2D" parent="VBoxContainer/CardContainer/Deck/DeckSlot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/CardContainer/Deck/DeckSlot/Area2D"]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_chrbe")
+
+[node name="Card1" type="PanelContainer" parent="VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5nit")
+
+[node name="Card2" type="PanelContainer" parent="VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5nit")
+
+[node name="Card3" type="PanelContainer" parent="VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5nit")
+
+[node name="Card4" type="PanelContainer" parent="VBoxContainer/CardContainer"]
+custom_minimum_size = Vector2(110, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5nit")
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1024, 50)
+layout_mode = 2
+text = "select an option below"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button1" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1myj")
+theme_override_styles/normal = ExtResource("3_xkqmx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1myj")
+theme_override_styles/normal = ExtResource("3_xkqmx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1myj")
+theme_override_styles/normal = ExtResource("3_xkqmx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_k1myj")
+theme_override_styles/normal = ExtResource("3_xkqmx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_o3y3i")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5ds4x")
+
+[node name="StartGameSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lfkyb")
+
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Button1" to="." method="_on_button1_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonContainer/Button4" to="." method="_on_button_4_pressed"]
