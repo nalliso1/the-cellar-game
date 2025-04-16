@@ -26,6 +26,7 @@ func _on_speech_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		$PingPongPanel.visible = true
 		$PingPongPanel/PingPongSpeechBubble.visible = true
+		print("in speech zone")
 		speech_zone = true
 
 func _on_speech_area_body_exited(body: Node2D) -> void:
@@ -36,8 +37,10 @@ func _on_speech_area_body_exited(body: Node2D) -> void:
 
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://sclub.tscn")
+		print("returning to previous scene")
+		WorldScript.return_to_previous_scene()
 
-func _process(delta):
-	if speech_zone == true and Input.is_action_just_pressed("accept"):
-		get_tree().change_scene_to_file("res://cellar.tscn")
+func _process(_delta):
+	if speech_zone == true and Input.is_action_just_pressed("y"):
+		print("running pong")
+		WorldScript.change_scene_to("res://games/pong/main.tscn")

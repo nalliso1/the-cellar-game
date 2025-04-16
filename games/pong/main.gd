@@ -27,5 +27,5 @@ func _on_score_right_body_entered(body: Node2D) -> void:
 
 func check_game_over() -> void:
 	if score[0] >= max_score or score[1] >= max_score:
-		get_tree().quit()
-		#get_tree().change_scene_to_file("res://GameOver.tscn") 
+		await get_tree().create_timer(3).timeout
+		WorldScript.return_to_previous_scene()

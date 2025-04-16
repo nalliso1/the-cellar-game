@@ -1,9 +1,8 @@
-[gd_scene load_steps=54 format=3 uid="uid://btl45qb7c6jui"]
+[gd_scene load_steps=53 format=3 uid="uid://btl45qb7c6jui"]
 
 [ext_resource type="Script" path="res://topDownRooms/cellar.gd" id="1_h3ctt"]
 [ext_resource type="Texture2D" uid="uid://bqpttlqy7ek5j" path="res://topDownRooms/background.jpg" id="2_pws71"]
 [ext_resource type="PackedScene" uid="uid://cukqggd2dkija" path="res://topDownRooms/player.tscn" id="3_mdhhg"]
-[ext_resource type="Script" path="res://topDownRooms/player.gd" id="4_i254d"]
 [ext_resource type="PackedScene" uid="uid://c62an72s5hnpl" path="res://topDownRooms/bot.tscn" id="4_n433y"]
 [ext_resource type="PackedScene" uid="uid://458pyiebvfaa" path="res://topDownRooms/bot_2.tscn" id="5_0u7fu"]
 [ext_resource type="PackedScene" uid="uid://blf7xw6snuq6a" path="res://topDownRooms/dealer.tscn" id="6_u8ta5"]
@@ -195,6 +194,7 @@ corner_radius_bottom_left = 30
 font_size = 10
 
 [node name="Cellar" type="Node2D"]
+position = Vector2(1326, -1)
 script = ExtResource("1_h3ctt")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -203,13 +203,15 @@ texture = ExtResource("2_pws71")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("3_mdhhg")]
-position = Vector2(-420, 334)
+position = Vector2(-418, 322)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("4_i254d")
 
 [node name="Bot" parent="." instance=ExtResource("4_n433y")]
 position = Vector2(-561, 84)
 scale = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" parent="Bot" index="0"]
+animation = &"down"
 
 [node name="BotPanel" type="Panel" parent="Bot"]
 visible = false

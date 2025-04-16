@@ -1,11 +1,11 @@
 [gd_scene load_steps=88 format=3 uid="uid://dfu2qmqihqc32"]
 
-[ext_resource type="Script" path="res://cafeteria.gd" id="1_0lrsg"]
-[ext_resource type="Texture2D" uid="uid://bfbdrt3ocetmt" path="res://Cafeteria.png" id="1_5n8w1"]
-[ext_resource type="PackedScene" uid="uid://cukqggd2dkija" path="res://player.tscn" id="2_wwlqv"]
-[ext_resource type="PackedScene" uid="uid://bqw7co45ao351" path="res://ping_pong_player.tscn" id="6_f2jhi"]
-[ext_resource type="PackedScene" uid="uid://cw0mnjri0ilxy" path="res://bot_3.tscn" id="7_ptany"]
-[ext_resource type="PackedScene" uid="uid://4w8rv6fvx0m3" path="res://bot_4.tscn" id="7_wgsne"]
+[ext_resource type="Script" path="res://topDownRooms/cafeteria.gd" id="1_0lrsg"]
+[ext_resource type="Texture2D" uid="uid://bfbdrt3ocetmt" path="res://topDownRooms/Cafeteria.png" id="1_5n8w1"]
+[ext_resource type="PackedScene" uid="uid://cukqggd2dkija" path="res://topDownRooms/player.tscn" id="2_wwlqv"]
+[ext_resource type="PackedScene" uid="uid://bqw7co45ao351" path="res://topDownRooms/ping_pong_player.tscn" id="6_f2jhi"]
+[ext_resource type="PackedScene" uid="uid://cw0mnjri0ilxy" path="res://topDownRooms/bot_3.tscn" id="7_ptany"]
+[ext_resource type="PackedScene" uid="uid://4w8rv6fvx0m3" path="res://topDownRooms/bot_4.tscn" id="7_wgsne"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jpea2"]
 a = Vector2(630, 37)
@@ -323,6 +323,7 @@ corner_radius_bottom_left = 15
 font_size = 8
 
 [node name="Cafeteria" type="Node2D"]
+position = Vector2(1167, 39)
 script = ExtResource("1_0lrsg")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -335,7 +336,11 @@ position = Vector2(-140, 58)
 scale = Vector2(1.5, 1.5)
 
 [node name="AnimatedSprite2D" parent="Player" index="0"]
+position = Vector2(488.667, 162)
 animation = &"left"
+
+[node name="CollisionShape2D" parent="Player" index="1"]
+position = Vector2(488, 180)
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 

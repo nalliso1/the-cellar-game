@@ -1,11 +1,11 @@
 [gd_scene load_steps=52 format=3 uid="uid://dlorf650vuq1e"]
 
-[ext_resource type="Texture2D" uid="uid://dsycli0f5pmaq" path="res://Sclub.png" id="1_kctjr"]
-[ext_resource type="Script" path="res://sclub.gd" id="1_x4i00"]
-[ext_resource type="PackedScene" uid="uid://cukqggd2dkija" path="res://player.tscn" id="2_017hj"]
-[ext_resource type="PackedScene" uid="uid://cjiq67s52sku7" path="res://dealer_race.tscn" id="4_qwnw8"]
-[ext_resource type="PackedScene" uid="uid://ddioejp3sj4a4" path="res://bot_6.tscn" id="6_r8xno"]
-[ext_resource type="PackedScene" uid="uid://b2uu1nis3m26a" path="res://bot_5.tscn" id="6_tnv0w"]
+[ext_resource type="Texture2D" uid="uid://dsycli0f5pmaq" path="res://topDownRooms/Sclub.png" id="1_kctjr"]
+[ext_resource type="Script" path="res://topDownRooms/sclub.gd" id="1_x4i00"]
+[ext_resource type="PackedScene" uid="uid://cukqggd2dkija" path="res://topDownRooms/player.tscn" id="2_017hj"]
+[ext_resource type="PackedScene" uid="uid://cjiq67s52sku7" path="res://topDownRooms/dealer_race.tscn" id="4_qwnw8"]
+[ext_resource type="PackedScene" uid="uid://ddioejp3sj4a4" path="res://topDownRooms/bot_6.tscn" id="6_r8xno"]
+[ext_resource type="PackedScene" uid="uid://b2uu1nis3m26a" path="res://topDownRooms/bot_5.tscn" id="6_tnv0w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02wi1"]
 size = Vector2(36, 357)
@@ -177,6 +177,7 @@ corner_radius_bottom_left = 15
 font_size = 8
 
 [node name="Sclub" type="Node2D"]
+position = Vector2(1770, 22)
 script = ExtResource("1_x4i00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bqw7co45ao351"]
 
-[ext_resource type="Texture2D" uid="uid://56lfn6mr1dgf" path="res://PingPongPlayer.png" id="1_c6eug"]
-[ext_resource type="Script" path="res://ping_pong_player.gd" id="1_vjc2e"]
+[ext_resource type="Texture2D" uid="uid://56lfn6mr1dgf" path="res://topDownRooms/PingPongPlayer.png" id="1_c6eug"]
+[ext_resource type="Script" path="res://topDownRooms/ping_pong_player.gd" id="1_vjc2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbk4h"]
 atlas = ExtResource("1_c6eug")

@@ -15,7 +15,7 @@ var lane4Position
 var suitChoice
 var suitChar
 
-const cardScene = preload("res://games/card.tscn")
+const cardScene = preload("res://games/materialsForHorseAndBus/card.tscn")
 
 var cardImagePaths
 var cardImagePathsLength
@@ -142,7 +142,7 @@ func createCard(cardImageName) -> Node2D:
 	
 	if cardImageName != "":
 	
-		fullCardPath = str("res://materials/cardImages/" + cardImageName)
+		fullCardPath = str("res://games/materialsForHorseAndBus/cardImages/" + cardImageName)
 		cardImagePaths.erase(cardImageName)
 		suitChar = cardImageName.substr(0,1)
 		
@@ -192,11 +192,15 @@ func winner():
 	$WinSound.play()
 	win.emit()
 	$VBoxContainer/Label.text = "You win"
+	await get_tree().create_timer(3).timeout
+	WorldScript.return_to_previous_scene()
 	
 func loser(): 
 	$LoseSound.play()
 	lose.emit()
 	$VBoxContainer/Label.text = "You picked the wrong suit"
+	await get_tree().create_timer(3).timeout
+	WorldScript.return_to_previous_scene()
 
 func _on_button_1_pressed() -> void:
 	suitChoice = "Heart"

@@ -7,23 +7,6 @@ const JUMP_VELOCITY = -500.0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-var wonCellar = false
-var wonSub = false
-
-func _ready() -> void:
-	pass
-	#used to keep track of player's progress
-	#RideTheBus.connect("won", beatRideTheBus.bind())
-	#Pong.connect("won", beatTheSub.bind())
-
-#maybe have something in the game indicate you've won?
-func beatRideTheBus():
-	print("int beat rife the bus")
-	wonCellar = true
-	
-func beatTheSub():
-	print("in beat the sub")
-	wonSub = true
 	
 	
 func _physics_process(delta: float) -> void:

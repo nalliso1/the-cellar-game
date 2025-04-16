@@ -12,7 +12,7 @@ extends Control
 
 @export var prev_scene: PackedScene  
 #const cellarScene = preload("res://topDownRooms/cellar.tscn")
-const cardScene = preload("res://games/card.tscn")
+const cardScene = preload("res://games/materialsForHorseAndBus/card.tscn")
 
 
 var questionNumber
@@ -37,11 +37,6 @@ func _ready() -> void:
 	
 	currentRun = emptyRun.duplicate(true)		
 	$StartGameSound.play()
-	
-	await get_tree().create_timer(3).timeout
-	#var cellarScene = preload("res://topDownRooms/cellar.tscn")
-	var err = get_tree().change_scene_to_packed(prev_scene)
-	print(err)
 	questionNumber = 1
 	getAllCardImagePaths()	
 	redOrBlack()
@@ -62,9 +57,8 @@ func loser():
 	disableButtons(true)
 	lose.emit() #connect this to the main scroller Lobby stuff to keep track of wins and loses
 
-	#await get_tree().create_timer(3).timeout
-	#prev_scene = cellarScene
-	#get_tree().change_scene_to_packed(prev_scene)
+	await get_tree().create_timer(3).timeout
+	WorldScript.return_to_previous_scene()
 
 func winner():
 	$VBoxContainer/OptionLabel.text = "winner"
@@ -72,10 +66,7 @@ func winner():
 	disableButtons(true)
 	win.emit()
 	await get_tree().create_timer(3).timeout
-	#prev_scene = cellarScene 
-	var cellarScene = preload("res://topDownRooms/cellar.tscn")
-	get_tree().change_scene_to_packed(cellarScene)
-
+	WorldScript.return_to_previous_scene()
 
 func disableButtons(on):
 	$VBoxContainer/ButtonContainer/Button1.disabled = on
@@ -106,7 +97,7 @@ func getAllCardImagePaths():
 func setCardDetails():
 	cardImagePathsLength = cardImagePaths.size()
 	
-	if cardImagePathsLength == 0: 
+	if cardImagePathsLength == 1: 
 		loser()
 		
 	var rng = RandomNumberGenerator.new()		

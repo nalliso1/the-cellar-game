@@ -1,8 +1,6 @@
 extends Area2D
 
 @export var speech_bubble: NodePath  
-@export var next_scene: PackedScene  
-const sclubScene = preload("res://topDownRooms/sclub.tscn")
 
 var bubble_ref: Node = null
 var player_inside: bool = false  
@@ -13,18 +11,15 @@ func _ready():
 		bubble_ref.hide()  
 
 func _on_body_entered(body):
-	if body.name == "player":  
+	if body.name == "Player":  
 		bubble_ref.show()
 		player_inside = true  
 
 func _on_body_exited(body):
-	if body.name == "player":
+	if body.name == "Player":
 		bubble_ref.hide()
 		player_inside = false  
 
-func _process(delta):
-	if player_inside and Input.is_action_just_pressed("ui_up"):  # Assuming 'interact' is mapped to 'e'
-		
-		#gotta validate they finished the other two rooms first
-		next_scene = sclubScene
-		get_tree().change_scene_to_packed(next_scene)
+func _process(_delta):
+	if player_inside and Input.is_action_just_pressed("y"):  # Assuming 'interact' is mapped to 'e'
+		WorldScript.change_scene_to("res://topDownRooms/sclub.tscn")

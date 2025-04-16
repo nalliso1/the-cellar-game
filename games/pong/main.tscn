@@ -30,6 +30,7 @@ size = Vector2(20, 647)
 
 [node name="Pong" type="Sprite2D"]
 texture_filter = 1
+position = Vector2(799, 21)
 scale = Vector2(1.00087, 1.04784)
 texture = ExtResource("1_24oyo")
 centered = false
@@ -120,10 +121,10 @@ stream = ExtResource("7_me8ef")
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="PlayerScore" type="Label" parent="Hud"]
-offset_left = 456.0
-offset_top = 5.0
-offset_right = 506.0
-offset_bottom = 55.0
+offset_left = 1255.0
+offset_top = 26.0
+offset_right = 1305.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_xk3by")
 theme_override_font_sizes/font_size = 50
 text = "0"
@@ -132,10 +133,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CPUScore" type="Label" parent="Hud"]
-offset_left = 648.0
-offset_top = 5.0
-offset_right = 698.0
-offset_bottom = 55.0
+offset_left = 1447.0
+offset_top = 26.0
+offset_right = 1497.0
+offset_bottom = 76.0
 theme_override_fonts/font = ExtResource("2_xk3by")
 theme_override_font_sizes/font_size = 50
 text = "0"

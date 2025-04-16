@@ -1076,6 +1076,7 @@ position = Vector2(-1133.33, 143.333)
 scale = Vector2(1.2, 1.2)
 
 [node name="Panel" type="Panel" parent="Background/CellarDoor/Area2D/Bouncer"]
+visible = false
 clip_contents = true
 offset_left = 727.0
 offset_top = -255.0
@@ -1091,7 +1092,7 @@ offset_right = 152.0
 offset_bottom = 116.0
 text = "Would you like to enter the Cellar?
 
-Press the y to enter."
+Press the up arrow to enter."
 label_settings = SubResource("LabelSettings_f1jqj")
 autowrap_mode = 3
 
@@ -1105,82 +1106,76 @@ position = Vector2(-26.7645, 1.76471)
 scale = Vector2(1.2, 1.2)
 shape = SubResource("RectangleShape2D_k8f70")
 
-[node name="SubDoor" type="Sprite2D" parent="Background"]
+[node name="Sub Door" type="Sprite2D" parent="Background"]
 position = Vector2(1878, -80)
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("6_fkvso")
 
-[node name="Area2D" type="Area2D" parent="Background/SubDoor"]
+[node name="Area2D" type="Area2D" parent="Background/Sub Door"]
 script = ExtResource("9_2g0x2")
 speech_bubble = NodePath("Panel")
 
-[node name="sub doorman" type="CharacterBody2D" parent="Background/SubDoor/Area2D"]
+[node name="sub doorman" type="CharacterBody2D" parent="Background/Sub Door/Area2D"]
 scale = Vector2(2, 2)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/SubDoor/Area2D/sub doorman"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Sub Door/Area2D/sub doorman"]
 position = Vector2(-31.7647, 5.58824)
 sprite_frames = SubResource("SpriteFrames_kh1l2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SubDoor/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Sub Door/Area2D"]
 position = Vector2(-22.3529, -0.735294)
 shape = SubResource("RectangleShape2D_fm7i8")
 
-[node name="Panel" type="Panel" parent="Background/SubDoor/Area2D"]
-clip_contents = true
-offset_left = -302.941
-offset_top = -160.0
-offset_right = -43.9412
-offset_bottom = -28.0
-
-[node name="Label" type="Label" parent="Background/SubDoor/Area2D/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Would you like to enter the Sub? 
-
-Press the y to enter."
-
-[node name="SclubDoor" type="Node2D" parent="Background"]
-
-[node name="Closed" type="Sprite2D" parent="Background/SclubDoor"]
-position = Vector2(3847, 302)
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("8_t1jw0")
-
-[node name="Open" type="Sprite2D" parent="Background/SclubDoor"]
+[node name="Panel" type="Panel" parent="Background/Sub Door/Area2D"]
 visible = false
-position = Vector2(3847, 302)
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("6_fkvso")
+clip_contents = true
+offset_left = -256.0
+offset_top = -149.0
+offset_right = -88.0
+offset_bottom = -17.0
 
-[node name="Label" type="Label" parent="Background/SclubDoor/Open"]
+[node name="Label" type="Label" parent="Background/Sub Door/Area2D/Panel"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.098
 anchor_top = 1.094
 anchor_right = 1.098
 anchor_bottom = 1.094
-offset_left = -1498.88
-offset_top = -475.73
-offset_right = -1331.88
-offset_bottom = -344.73
-text = "Would you like to enter the S Club?
+offset_left = -183.464
+offset_top = -141.408
+offset_right = -16.464
+offset_bottom = -10.408
+text = "Would you like to enter the Sub?
 
-Press the y to enter."
+Press the up arrow to enter."
 label_settings = SubResource("LabelSettings_q2hiy")
 autowrap_mode = 3
 
-[node name="Area2D" type="Area2D" parent="Background/SclubDoor"]
+[node name="S Club Door" type="Node2D" parent="Background"]
+
+[node name="Closed" type="Sprite2D" parent="Background/S Club Door"]
+position = Vector2(3847, 302)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("8_t1jw0")
+
+[node name="Open" type="Sprite2D" parent="Background/S Club Door"]
+visible = false
+position = Vector2(3847, 302)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("6_fkvso")
+
+[node name="Area2D" type="Area2D" parent="Background/S Club Door"]
 script = ExtResource("12_fyqym")
 speech_bubble = NodePath("Panel")
 
-[node name="s club bouncer" type="CharacterBody2D" parent="Background/SclubDoor/Area2D"]
+[node name="s club bouncer" type="CharacterBody2D" parent="Background/S Club Door/Area2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/SclubDoor/Area2D/s club bouncer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/S Club Door/Area2D/s club bouncer"]
 position = Vector2(3716, 334)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_qypcu")
 
-[node name="Panel" type="Panel" parent="Background/SclubDoor/Area2D"]
+[node name="Panel" type="Panel" parent="Background/S Club Door/Area2D"]
 visible = false
 clip_contents = true
 offset_left = 3428.0
@@ -1188,7 +1183,7 @@ offset_top = 100.0
 offset_right = 3683.0
 offset_bottom = 282.0
 
-[node name="Label" type="Label" parent="Background/SclubDoor/Area2D/Panel"]
+[node name="Label" type="Label" parent="Background/S Club Door/Area2D/Panel"]
 layout_mode = 0
 offset_right = 254.0
 offset_bottom = 200.0
@@ -1197,7 +1192,7 @@ text = "You can enter the S club once you've beaten all the games.
 label_settings = SubResource("LabelSettings_0ykus")
 autowrap_mode = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SclubDoor/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/S Club Door/Area2D"]
 position = Vector2(3789, 305.5)
 shape = SubResource("RectangleShape2D_j3wwo")
 
@@ -1258,7 +1253,7 @@ offset_right = 325.0
 offset_bottom = 224.0
 text = "Use the left and right arrow keys to move.
 Press Space to jump.
-Press the y key to enter doors."
+Press the up arrow to enter doors."
 label_settings = SubResource("LabelSettings_h4s7u")
 autowrap_mode = 3
 
@@ -1267,11 +1262,11 @@ position = Vector2(732, 1)
 tile_map_data = PackedByteArray("AAD0/wUAAAAAAAAAAAD1/wUAAAAAAAAAAAD2/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAD//wMAAAAEAAMAAAAAAAMAAAAEAAMAAAACAAEAAAAEAAMAAAADAAEAAAAEAAMAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAdAAoAAAAAAAAAAAAeAAkAAAAAAAAAAAAfAAkAAAAAAAAAAAAgAAgAAAAAAAAAAAAhAAgAAAAAAAAAAAAiAAcAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAYAAAAAAAAAAAAlAAYAAAAAAAAAAAAmAAYAAAAAAAAAAAAnAAYAAAAAAAAAAAAoAAYAAAAAAAAAAAApAAYAAAAAAAAAAAAqAAYAAAAAAAAAAAArAAYAAAAAAAAAAAAsAAYAAAAAAAAAAAAtAAYAAAAAAAAAAAAuAAYAAAAAAAAAAAAvAAYAAAAAAAAAAAAwAAYAAAAAAAAAAADz/wMAAAACAAEAAADz/wQAAAACAAEAAADz/wUAAAACAAEAAADz/wIAAAACAAEAAADz/wEAAAACAAEAAADz////AAACAAEAAADz/wAAAAACAAEAAADz//7/AAACAAEAAADz//z/AAACAAEAAADz//3/AAACAAEAAAAxAAYAAAAAAAAAAAAyAAYAAAAAAAAAAAAzAAYAAAAAAAAAAAA0AAAAAAAAAAEAAAA0AAEAAAAAAAEAAAA0AAIAAAAAAAEAAAA0AAMAAAAAAAEAAAA0AAQAAAAAAAEAAAA0AAUAAAAAAAEAAAA0AAYAAAAAAAEAAAA0AP7/AAAAAAEAAAA0AP//AAAAAAEAAAAhAAQAAAAEAAQAAAAgAAQAAAAEAAMAAAAdAAIAAAAEAAMAAAAeAAIAAAAEAAQAAADz//v/AAACAAEAAADz//j/AAACAAEAAADz//n/AAACAAEAAADz//r/AAACAAEAAAA0APj/AAAAAAEAAAA0APn/AAAAAAEAAAA0APr/AAAAAAEAAAA0APv/AAAAAAEAAAA0APz/AAAAAAEAAAA0AP3/AAAAAAEAAAA=")
 tile_set = SubResource("TileSet_ytd5b")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_rc5mc")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_rc5mc")]
 position = Vector2(37, 280)
 scale = Vector2(2.5, 2.5)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(0.75, 0.75)
 limit_left = 0
 limit_top = -500
@@ -1281,9 +1276,9 @@ limit_smoothed = true
 
 [connection signal="body_entered" from="Background/CellarDoor/Area2D" to="Background/CellarDoor/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Background/CellarDoor/Area2D" to="Background/CellarDoor/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="Background/SubDoor/Area2D" to="Background/SubDoor/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Background/SubDoor/Area2D" to="Background/SubDoor/Area2D" method="_on_body_exited"]
-[connection signal="body_entered" from="Background/SclubDoor/Area2D" to="Background/SclubDoor/Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Background/SclubDoor/Area2D" to="Background/SclubDoor/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Background/Sub Door/Area2D" to="Background/Sub Door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Background/Sub Door/Area2D" to="Background/Sub Door/Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Background/S Club Door/Area2D" to="Background/S Club Door/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Background/S Club Door/Area2D" to="Background/S Club Door/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="Background/Greeter/Area2D" to="Background/Greeter/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Background/Greeter/Area2D" to="Background/Greeter/Area2D" method="_on_body_exited"]
