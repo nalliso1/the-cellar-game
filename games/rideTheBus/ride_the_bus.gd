@@ -67,6 +67,7 @@ func winner():
 	win.emit()
 	await get_tree().create_timer(3).timeout
 	WorldScript.return_to_previous_scene()
+	WorldScript.switch_camera("res://topDownRooms/cellar.tscn")
 
 func disableButtons(on):
 	$VBoxContainer/ButtonContainer/Button1.disabled = on

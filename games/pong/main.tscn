@@ -31,7 +31,7 @@ size = Vector2(20, 647)
 [node name="Pong" type="Sprite2D"]
 texture_filter = 1
 position = Vector2(799, 21)
-scale = Vector2(1.00087, 1.04784)
+scale = Vector2(1.10156, 0.924383)
 texture = ExtResource("1_24oyo")
 centered = false
 script = ExtResource("2_hhpdm")
@@ -147,6 +147,10 @@ metadata/_edit_use_anchors_ = true
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="PongCamera" type="Camera2D" parent="."]
+position = Vector2(575.546, 324.541)
+zoom = Vector2(0.8, 0.8)
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
