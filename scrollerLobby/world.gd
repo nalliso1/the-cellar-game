@@ -2,8 +2,17 @@ extends Node
 
 var current_scene = null
 var previous_scenes = []
-#
-func _ready() -> void:	
+var camera_paths = {
+	"res://scrollerLobby/world.tscn": "Player/ScrollerCamera",
+	"res://topDownRooms/cellar.tscn": "Player/CellarCamera",
+	"res://topDownRooms/cafeteria.tscn": "Player/CafeteriaCamera",
+	"res://topDownRooms/sclub.tscn": "Player/SClubCamera",
+	"res://games/rideTheBus/ride_the_bus.tscn": "RideTheBusCamera",
+	"res://games/pong/main.tscn": "PongCamera",
+	"res://games/horseRacing/horse_racing.tscn": "HorseRacingCamera"
+}
+
+func _ready() -> void:
 	current_scene = get_tree().current_scene
 	current_scene.name = "World"
 
@@ -17,24 +26,40 @@ func change_scene_to(path: String):
 
 	print("the path sent is: " + path)
 	var new_scene = load(path).instantiate()
+
 	if path == "res://topDownRooms/cellar.tscn":
-		new_scene.name == "Cellar"
-	if path == "res://topDownRooms/cafeteria.tscn":
-		new_scene.name == "Sub"
-	if path == "res://topDownRooms/sclub.tscn":
-		new_scene.name == "Sclub"
-		
-	if path == "res://games/rideTheBus/ride_the_bus.tscn":
-		new_scene.name == "RideTheBus"
-	if path == "res://games/pong/main.tscn":
-		new_scene.name == "Pong"
-	if path == "res://games/horseRacing/horse_racing.tscn":
-		new_scene.name == "HorseRacing"
-	
+		new_scene.name = "Cellar"
+	elif path == "res://topDownRooms/cafeteria.tscn":
+		new_scene.name = "Sub"
+	elif path == "res://topDownRooms/sclub.tscn":
+		new_scene.name = "Sclub"
+	elif path == "res://games/rideTheBus/ride_the_bus.tscn":
+		new_scene.name = "RideTheBus"
+	elif path == "res://games/pong/main.tscn":
+		new_scene.name = "Pong"
+	elif path == "res://games/horseRacing/horse_racing.tscn":
+		new_scene.name = "HorseRacing"
+
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
 	get_tree().current_scene = current_scene
 	print("in the " + current_scene.name)
+
+	switch_camera(path)
+
+func switch_camera(path: String):
+	if camera_paths.has(path):
+		var camera_path = camera_paths[path]
+		var camera = current_scene.get_node_or_null(camera_path)
+		
+		if camera and camera is Camera2D:
+			camera.make_current()
+			print("Switched to camera: " + camera_path)
+		else:
+			print("No Camera2D found at: " + camera_path)
+	else:
+		print("No camera path defined for this scene.")
+
 
 func return_to_previous_scene():
 	if current_scene:
@@ -49,7 +74,7 @@ func return_to_previous_scene():
 		get_tree().current_scene = current_scene
 		setProcesses(true)
 
-func setProcesses(trueOrFalse):	
+func setProcesses(trueOrFalse):
 	if current_scene.get_node_or_null("Background/CellarDoor/Area2D") != null:
 		current_scene.get_node_or_null("Background/CellarDoor/Area2D").set_physics_process(trueOrFalse)
 		current_scene.get_node_or_null("Background/CellarDoor/Area2D").set_process(trueOrFalse)
@@ -58,10 +83,7 @@ func setProcesses(trueOrFalse):
 		current_scene.get_node_or_null("Background/SubDoor/Area2D").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Background/SclubDoor/Area2D") != null:
 		current_scene.get_node_or_null("Background/SclubDoor/Area2D").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Background/SclubDoor/Area2D").set_process(trueOrFalse)		
-	if current_scene.get_node_or_null("Player") != null:
-		current_scene.get_node_or_null("Player").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Player").set_process(trueOrFalse)
+		current_scene.get_node_or_null("Background/SclubDoor/Area2D").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Player") != null:
 		current_scene.get_node_or_null("Player").set_physics_process(trueOrFalse)
 		current_scene.get_node_or_null("Player").set_process(trueOrFalse)
