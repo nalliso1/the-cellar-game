@@ -192,6 +192,16 @@ scale = Vector2(1.5, 1.5)
 [node name="AnimatedSprite2D" parent="Player" index="0"]
 animation = &"left"
 
+[node name="SClubCamera" type="Camera2D" parent="Player"]
+position = Vector2(303.333, 154)
+scale = Vector2(0.666667, 0.666667)
+zoom = Vector2(1.5, 1.5)
+limit_left = 1750
+limit_top = 25
+limit_right = 2425
+limit_bottom = 675
+limit_smoothed = true
+
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]

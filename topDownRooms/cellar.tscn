@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://btl45qb7c6jui"]
+[gd_scene load_steps=52 format=3 uid="uid://btl45qb7c6jui"]
 
 [ext_resource type="Script" path="res://topDownRooms/cellar.gd" id="1_h3ctt"]
 [ext_resource type="Texture2D" uid="uid://bqpttlqy7ek5j" path="res://topDownRooms/background.jpg" id="2_pws71"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c62an72s5hnpl" path="res://topDownRooms/bot.tscn" id="4_n433y"]
 [ext_resource type="PackedScene" uid="uid://458pyiebvfaa" path="res://topDownRooms/bot_2.tscn" id="5_0u7fu"]
 [ext_resource type="PackedScene" uid="uid://blf7xw6snuq6a" path="res://topDownRooms/dealer.tscn" id="6_u8ta5"]
-[ext_resource type="Script" path="res://topDownRooms/bot.gd" id="7_typ6e"]
 [ext_resource type="Script" path="res://topDownRooms/dealer_race.gd" id="9_omtd7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msigm"]
@@ -206,6 +205,15 @@ centered = false
 position = Vector2(-418, 322)
 scale = Vector2(1.5, 1.5)
 
+[node name="CellarCamera" type="Camera2D" parent="Player"]
+position = Vector2(504.667, 152)
+zoom = Vector2(1.6, 1.6)
+limit_left = 1400
+limit_top = 0
+limit_right = 1975
+limit_bottom = 650
+limit_smoothed = true
+
 [node name="Bot" parent="." instance=ExtResource("4_n433y")]
 position = Vector2(-561, 84)
 scale = Vector2(1.5, 1.5)
@@ -236,7 +244,6 @@ horizontal_alignment = 1
 [node name="Bot2" parent="." instance=ExtResource("5_0u7fu")]
 position = Vector2(-265, 90)
 scale = Vector2(1.5, 1.5)
-script = ExtResource("7_typ6e")
 
 [node name="BotPanel" type="Panel" parent="Bot2"]
 visible = false

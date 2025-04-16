@@ -42,5 +42,4 @@ func _on_exit_body_entered(body: Node2D) -> void:
 
 func _process(_delta):
 	if speech_zone == true and Input.is_action_just_pressed("y"):
-		print("running pong")
 		WorldScript.change_scene_to("res://games/pong/main.tscn")
