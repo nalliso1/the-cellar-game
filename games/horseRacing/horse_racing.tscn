@@ -459,10 +459,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -375.0
-offset_top = 162.0
-offset_right = 375.0
-offset_bottom = 262.0
+offset_left = -381.0
+offset_top = 57.0
+offset_right = 369.0
+offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50
@@ -516,7 +516,7 @@ stream = ExtResource("9_33m1i")
 
 [node name="HorseRacingCamera" type="Camera2D" parent="."]
 position = Vector2(550, 333)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.75, 0.75)
 
 [connection signal="pressed" from="SelectionWindow/ButtonContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="SelectionWindow/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]

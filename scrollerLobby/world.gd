@@ -2,6 +2,7 @@ extends Node
 
 var current_scene = null
 var previous_scenes = []
+var previous_paths = []
 var camera_paths = {
 	"res://scrollerLobby/world.tscn": "Player/ScrollerCamera",
 	"res://topDownRooms/cellar.tscn": "Player/CellarCamera",
@@ -15,11 +16,13 @@ var camera_paths = {
 func _ready() -> void:
 	current_scene = get_tree().current_scene
 	current_scene.name = "World"
+	previous_paths = ["res://scrollerLobby/world.tscn"]
 
 func change_scene_to(path: String):
 	if current_scene:
 		setProcesses(false)
 		previous_scenes.append(current_scene)
+		previous_paths.append(path)
 		current_scene.set_process(false)
 		current_scene.set_physics_process(false)
 		current_scene.visible = false
@@ -46,6 +49,7 @@ func change_scene_to(path: String):
 	get_tree().current_scene = current_scene
 	print("in the " + current_scene.name)
 
+	print(previous_paths)
 	switch_camera(path)
 
 func switch_camera(path: String):
@@ -68,6 +72,7 @@ func return_to_previous_scene():
 
 	if previous_scenes.size() > 0:
 		var previous = previous_scenes.pop_back()
+		print(previous.name)
 		previous.visible = true
 		previous.set_process(true)
 		previous.set_physics_process(true)
@@ -75,6 +80,10 @@ func return_to_previous_scene():
 		get_tree().current_scene = current_scene
 		setProcesses(true)
 
+	if previous_paths.size() > 0:
+		var prev_path = previous_paths.pop_back()
+		print(prev_path)	
+		switch_camera(previous_paths.back())
 
 
 func setProcesses(trueOrFalse):
