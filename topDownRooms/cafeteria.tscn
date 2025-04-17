@@ -335,6 +335,13 @@ texture = ExtResource("1_5n8w1")
 position = Vector2(-140, 58)
 scale = Vector2(1.5, 1.5)
 
+[node name="AnimatedSprite2D" parent="Player" index="0"]
+position = Vector2(488.667, 162)
+animation = &"left"
+
+[node name="CollisionShape2D" parent="Player" index="1"]
+position = Vector2(488, 180)
+
 [node name="CafeteriaCamera" type="Camera2D" parent="Player"]
 position = Vector2(250, 168.667)
 scale = Vector2(0.666667, 0.666667)
@@ -345,13 +352,6 @@ limit_right = 1810
 limit_bottom = 675
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="AnimatedSprite2D" parent="Player" index="1"]
-position = Vector2(488.667, 162)
-animation = &"left"
-
-[node name="CollisionShape2D" parent="Player" index="2"]
-position = Vector2(488, 180)
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
@@ -712,7 +712,7 @@ offset_top = 17.0
 offset_right = 307.0
 offset_bottom = 106.0
 text = "I challenge you to ping pong 
-press y to play!
+press p to play!
       "
 label_settings = SubResource("LabelSettings_2iqph")
 

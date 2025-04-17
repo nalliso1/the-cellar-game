@@ -202,7 +202,7 @@ texture = ExtResource("2_pws71")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("3_mdhhg")]
-position = Vector2(-418, 322)
+position = Vector2(-421, 305)
 scale = Vector2(1.5, 1.5)
 
 [node name="CellarCamera" type="Camera2D" parent="Player"]

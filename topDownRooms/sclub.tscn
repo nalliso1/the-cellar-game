@@ -401,7 +401,7 @@ offset_top = 17.0
 offset_right = 292.0
 offset_bottom = 106.0
 text = "Would you like to play Horse Race
-press y to play!
+press r to race!
       "
 label_settings = SubResource("LabelSettings_uokl8")
 

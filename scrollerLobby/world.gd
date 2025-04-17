@@ -18,11 +18,12 @@ func _ready() -> void:
 
 func change_scene_to(path: String):
 	if current_scene:
+		setProcesses(false)
 		previous_scenes.append(current_scene)
 		current_scene.set_process(false)
 		current_scene.set_physics_process(false)
 		current_scene.visible = false
-		setProcesses(false)
+		
 
 	print("the path sent is: " + path)
 	var new_scene = load(path).instantiate()
@@ -74,43 +75,51 @@ func return_to_previous_scene():
 		get_tree().current_scene = current_scene
 		setProcesses(true)
 
+
+
 func setProcesses(trueOrFalse):
-	if current_scene.get_node_or_null("Background/CellarDoor/Area2D") != null:
-		current_scene.get_node_or_null("Background/CellarDoor/Area2D").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Background/CellarDoor/Area2D").set_process(trueOrFalse)
-	if current_scene.get_node_or_null("Background/SubDoor/Area2D") != null:
-		current_scene.get_node_or_null("Background/SubDoor/Area2D").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Background/SubDoor/Area2D").set_process(trueOrFalse)
-	if current_scene.get_node_or_null("Background/SclubDoor/Area2D") != null:
-		current_scene.get_node_or_null("Background/SclubDoor/Area2D").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Background/SclubDoor/Area2D").set_process(trueOrFalse)
+	print(current_scene.name + " set processes " + str(trueOrFalse))
+	if current_scene.get_node_or_null("Backgrounds/CellarDoor/Area2D") != null:
+		current_scene.get_node("Backgrounds/CellarDoor/Area2D").set_physics_process(trueOrFalse)
+		current_scene.get_node("Backgrounds/CellarDoor/Area2D").set_process(trueOrFalse)
+	if current_scene.get_node_or_null("Backgrounds/SubDoor/Area2D") != null:
+		current_scene.get_node("Backgrounds/SubDoor/Area2D").set_physics_process(trueOrFalse)
+		current_scene.get_node("Backgrounds/SubDoor/Area2D").set_process(trueOrFalse)
+	if current_scene.get_node_or_null("Backgrounds/SclubDoor/Area2D") != null:
+		current_scene.get_node("Backgrounds/SclubDoor/Area2D").set_physics_process(trueOrFalse)
+		current_scene.get_node("Backgrounds/SclubDoor/Area2D").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Player") != null:
-		current_scene.get_node_or_null("Player").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Player").set_process(trueOrFalse)
+		current_scene.get_node("Player").set_physics_process(trueOrFalse)
+		current_scene.get_node("Player").set_process(trueOrFalse)
+		if trueOrFalse:
+			current_scene.get_node("Player").collision_layer = 1
+		else: 
+			current_scene.get_node("Player").collision_layer = 2
+			
 	if current_scene.get_node_or_null("Bot") != null:
-		current_scene.get_node_or_null("Bot").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot").set_process(trueOrFalse)
+		current_scene.get_node("Bot").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Bot2") != null:
-		current_scene.get_node_or_null("Bot2").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot2").set_process(trueOrFalse)
+		current_scene.get_node("Bot2").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot2").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Bot_3") != null:
-		current_scene.get_node_or_null("Bot_3").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot_3").set_process(trueOrFalse)
+		current_scene.get_node("Bot_3").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot_3").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Bot_4") != null:
-		current_scene.get_node_or_null("Bot_4").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot_4").set_process(trueOrFalse)
+		current_scene.get_node("Bot_4").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot_4").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Bot_5") != null:
-		current_scene.get_node_or_null("Bot_5").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot_5").set_process(trueOrFalse)
+		current_scene.get_node("Bot_5").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot_5").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Bot_6") != null:
-		current_scene.get_node_or_null("Bot_6").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Bot_6").set_process(trueOrFalse)
+		current_scene.get_node("Bot_6").set_physics_process(trueOrFalse)
+		current_scene.get_node("Bot_6").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("Dealer") != null:
-		current_scene.get_node_or_null("Dealer").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("Dealer").set_process(trueOrFalse)
+		current_scene.get_node("Dealer").set_physics_process(trueOrFalse)
+		current_scene.get_node("Dealer").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("dealer_race") != null:
-		current_scene.get_node_or_null("dealer_race").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("dealer_race").set_process(trueOrFalse)
+		current_scene.get_node("dealer_race").set_physics_process(trueOrFalse)
+		current_scene.get_node("dealer_race").set_process(trueOrFalse)
 	if current_scene.get_node_or_null("PingPongPlayer") != null:
-		current_scene.get_node_or_null("PingPongPlayer").set_physics_process(trueOrFalse)
-		current_scene.get_node_or_null("PingPongPlayer").set_process(trueOrFalse)
+		current_scene.get_node("PingPongPlayer").set_physics_process(trueOrFalse)
+		current_scene.get_node("PingPongPlayer").set_process(trueOrFalse)

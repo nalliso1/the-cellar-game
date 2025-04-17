@@ -21,5 +21,5 @@ func _on_body_exited(body):
 		player_inside = false  
 
 func _process(_delta):
-	if player_inside and Input.is_action_just_pressed("y"):  # Assuming 'interact' is mapped to 'e'
+	if player_inside and Input.is_action_pressed("y"):  # Assuming 'interact' is mapped to 'e'
 		WorldScript.change_scene_to("res://topDownRooms/cafeteria.tscn")
