@@ -1,12 +1,10 @@
 [gd_scene load_steps=17 format=4 uid="uid://qj6t2sxa8ec5"]
 
+[ext_resource type="Texture2D" uid="uid://ba5gblyrwmbpq" path="res://games/pong/Misc/Bg.png" id="1_i7kth"]
 [ext_resource type="Script" path="res://games/pong/main.gd" id="2_hhpdm"]
 [ext_resource type="Script" path="res://games/pong/player.gd" id="3_1eqqa"]
 [ext_resource type="Script" path="res://games/pong/cpu.gd" id="4_tn50y"]
 [ext_resource type="Script" path="res://games/pong/ball.gd" id="4_xgg3p"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rs4eb"]
-load_path = "res://.godot/imported/Bg.png-9f8c8991efbc0df174d26c2715a53a98.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4xjv"]
 size = Vector2(20, 120)
@@ -119,14 +117,16 @@ cache/0/50/0/glyphs/3/texture_idx = 0
 
 [node name="Pong" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(799, 21)
-scale = Vector2(1.10156, 0.924383)
-texture = SubResource("CompressedTexture2D_rs4eb")
+position = Vector2(1, 0)
+scale = Vector2(0.89, 0.747)
+texture = ExtResource("1_i7kth")
 centered = false
 script = ExtResource("2_hhpdm")
 
 [node name="Player" type="StaticBody2D" parent="."]
 position = Vector2(50, 324)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("3_1eqqa")
 
 [node name="ColorRect" type="ColorRect" parent="Player"]
@@ -145,6 +145,8 @@ shape = SubResource("RectangleShape2D_a4xjv")
 
 [node name="CPU" type="StaticBody2D" parent="."]
 position = Vector2(1082, 324)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("4_tn50y")
 
 [node name="ColorRect" type="ColorRect" parent="CPU"]
@@ -163,7 +165,8 @@ shape = SubResource("RectangleShape2D_a4xjv")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(576, 324)
-collision_mask = 3
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("4_xgg3p")
 
 [node name="ColorRect" type="ColorRect" parent="Ball"]
@@ -178,30 +181,35 @@ shape = SubResource("RectangleShape2D_nxwmc")
 [node name="BounceSound" type="AudioStreamPlayer2D" parent="Ball"]
 stream = SubResource("AudioStreamMP3_ywny1")
 
-[node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 2
+[node name="Walls" type="StaticBody2D" parent="." groups=["Walls"]]
+collision_layer = 4
+collision_mask = 4
 
 [node name="Top" type="CollisionShape2D" parent="Walls"]
-position = Vector2(576, -10)
+position = Vector2(576.404, 2.67738)
 shape = SubResource("RectangleShape2D_8bhgb")
 
 [node name="Bottom" type="CollisionShape2D" parent="Walls"]
-position = Vector2(575.5, 657.543)
+position = Vector2(577.528, 649.264)
 shape = SubResource("RectangleShape2D_ncb2f")
 
 [node name="ScoreLeft" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreLeft"]
-position = Vector2(-10, 324)
+position = Vector2(2.24719, 323.963)
 shape = SubResource("RectangleShape2D_cj4v6")
 
 [node name="LosePoint" type="AudioStreamPlayer2D" parent="ScoreLeft"]
 stream = SubResource("AudioStreamMP3_n6vbm")
 
 [node name="ScoreRight" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreRight"]
-position = Vector2(1162, 322.5)
+position = Vector2(1142.7, 323.963)
 shape = SubResource("RectangleShape2D_tf8uw")
 
 [node name="WinPoint" type="AudioStreamPlayer2D" parent="ScoreRight"]
@@ -210,10 +218,10 @@ stream = SubResource("AudioStreamMP3_4xfj0")
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="PlayerScore" type="Label" parent="Hud"]
-offset_left = 1255.0
-offset_top = 26.0
-offset_right = 1305.0
-offset_bottom = 76.0
+offset_left = 405.0
+offset_top = 4.0
+offset_right = 455.0
+offset_bottom = 54.0
 theme_override_fonts/font = SubResource("FontFile_xs02e")
 theme_override_font_sizes/font_size = 50
 text = "0"
@@ -222,10 +230,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="CPUScore" type="Label" parent="Hud"]
-offset_left = 1447.0
-offset_top = 26.0
-offset_right = 1497.0
-offset_bottom = 76.0
+offset_left = 599.0
+offset_top = 5.0
+offset_right = 649.0
+offset_bottom = 55.0
 theme_override_fonts/font = SubResource("FontFile_xs02e")
 theme_override_font_sizes/font_size = 50
 text = "0"
@@ -239,7 +247,6 @@ autostart = true
 
 [node name="PongCamera" type="Camera2D" parent="."]
 position = Vector2(575.546, 324.541)
-zoom = Vector2(0.75, 0.75)
 
 [connection signal="body_entered" from="ScoreLeft" to="." method="_on_score_left_body_entered"]
 [connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]

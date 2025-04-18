@@ -19,4 +19,4 @@ func _process(delta):
 		move_by = dist
 	position.y -= move_by
 	
-	position.y = clamp(position.y, p_height/2, win_height - p_height /2)
+	position.y = clamp(position.y, 0,600)
