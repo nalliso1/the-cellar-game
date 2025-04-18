@@ -2,6 +2,7 @@ extends Node
 
 var won_ride_the_bus = false
 var won_pong = false
+var won_horse_race = false
 
 var current_scene = null
 var previous_scenes = []
@@ -22,15 +23,18 @@ func _ready() -> void:
 	previous_paths = ["res://scrollerLobby/world.tscn"]
 
 func _process(_delta):
-	if won_ride_the_bus:
+	if won_ride_the_bus == true and won_pong == true:
 		var sclub_label = current_scene.get_node_or_null("Backgrounds/SclubDoor/Area2D/Panel/Label")
 		if sclub_label:
 			sclub_label.text = "Congrats! You may now enter the Sclub. Press y to enter"
+			var open_door = current_scene.get_node_or_null("Backgrounds/SclubDoor/Open")
+			if open_door:
+				open_door.visible = true
 
 func change_scene_to(path: String):
 	
-	if path == "res://topDownRooms/sclub.tscn" and not won_ride_the_bus:
-		print("Access denied: You must win Ride the Bus to enter Sclub.")
+	if path == "res://topDownRooms/sclub.tscn" and (not won_ride_the_bus or not won_pong):
+		print("Access denied: You must win Ride the Bus and pong to enter Sclub.")
 		return
 	
 	if current_scene:

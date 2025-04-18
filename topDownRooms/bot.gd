@@ -8,6 +8,8 @@ var time = 0.0
 
 func _ready():
 	direction = new_direction()
+	$BotPanel.z_index = 3
+	$BotPanel/BotSpeechBubble.z_index = 3
 
 func _physics_process(delta):
 	time += delta

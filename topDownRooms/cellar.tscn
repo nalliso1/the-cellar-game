@@ -439,6 +439,7 @@ shape = SubResource("RectangleShape2D_x0nq3")
 
 [node name="DealerPanel" type="Panel" parent="."]
 visible = false
+z_index = 5
 offset_left = 202.0
 offset_top = 34.0
 offset_right = 420.0
@@ -447,6 +448,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_05cv2")
 
 [node name="DealerSpeechBubble" type="Label" parent="DealerPanel"]
 visible = false
+z_index = 5
 layout_mode = 0
 offset_left = 29.0
 offset_top = 11.0

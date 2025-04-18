@@ -193,6 +193,7 @@ func winner():
 	win.emit()
 	$VBoxContainer/Label.text = "You win"
 	await get_tree().create_timer(3).timeout
+	WorldScript.won_horse_race = true
 	WorldScript.return_to_previous_scene()
 	
 func loser(): 

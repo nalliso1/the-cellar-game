@@ -755,6 +755,7 @@ scale = Vector2(1.7, 1.7)
 texture = ExtResource("6_fkvso")
 
 [node name="Label" type="Label" parent="Backgrounds/SclubDoor/Open"]
+visible = false
 anchors_preset = -1
 anchor_left = 1.098
 anchor_top = 1.094

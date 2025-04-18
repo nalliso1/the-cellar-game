@@ -41,6 +41,10 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		WorldScript.return_to_previous_scene()
 
 func _process(_delta):
+	if WorldScript.won_horse_race:
+		speech_zone = false
+		$DealerRacePanel/DealerRaceSpeechBubble.text = "Congrats! You won every game!"
+	
 	if speech_zone == true and Input.is_action_pressed("r"):
 		print("in race")
 		WorldScript.change_scene_to("res://games/horseRacing/horse_racing.tscn")
