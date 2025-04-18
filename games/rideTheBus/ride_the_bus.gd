@@ -66,6 +66,7 @@ func winner():
 	disableButtons(true)
 	win.emit()
 	await get_tree().create_timer(3).timeout
+	WorldScript.won_ride_the_bus = true
 	WorldScript.return_to_previous_scene()
 	WorldScript.switch_camera("res://topDownRooms/cellar.tscn")
 

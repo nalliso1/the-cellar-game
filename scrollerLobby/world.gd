@@ -1,5 +1,8 @@
 extends Node
 
+var won_ride_the_bus = false
+var won_pong = false
+
 var current_scene = null
 var previous_scenes = []
 var previous_paths = []
@@ -18,7 +21,18 @@ func _ready() -> void:
 	current_scene.name = "World"
 	previous_paths = ["res://scrollerLobby/world.tscn"]
 
+func _process(_delta):
+	if won_ride_the_bus:
+		var sclub_label = current_scene.get_node_or_null("Backgrounds/SclubDoor/Area2D/Panel/Label")
+		if sclub_label:
+			sclub_label.text = "Congrats! You may now enter the Sclub. Press y to enter"
+
 func change_scene_to(path: String):
+	
+	if path == "res://topDownRooms/sclub.tscn" and not won_ride_the_bus:
+		print("Access denied: You must win Ride the Bus to enter Sclub.")
+		return
+	
 	if current_scene:
 		setProcesses(false)
 		previous_scenes.append(current_scene)
@@ -28,7 +42,7 @@ func change_scene_to(path: String):
 		current_scene.visible = false
 		
 
-	print("the path sent is: " + path)
+	print("the path sent is: " + path)	
 	var new_scene = load(path).instantiate()
 
 	if path == "res://topDownRooms/cellar.tscn":
@@ -47,6 +61,7 @@ func change_scene_to(path: String):
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
 	get_tree().current_scene = current_scene
+	
 	print("in the " + current_scene.name)
 
 	print(previous_paths)

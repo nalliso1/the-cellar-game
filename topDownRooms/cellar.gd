@@ -39,5 +39,9 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		WorldScript.return_to_previous_scene()
 
 func _process(_delta):
+	if WorldScript.won_ride_the_bus:
+		speech_zone = false
+		$DealerPanel/DealerSpeechBubble.text = "Congrats! You won!"
+
 	if speech_zone == true and Input.is_action_pressed("y"):
 		WorldScript.change_scene_to("res://games/rideTheBus/ride_the_bus.tscn")

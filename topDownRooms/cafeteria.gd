@@ -41,6 +41,10 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		WorldScript.return_to_previous_scene()
 
 func _process(_delta):
+	if WorldScript.won_pong:
+		speech_zone = false
+		$PingPongPanel/PingPongSpeechBubble.text = "Congrats! You won!"
+	
 	if speech_zone == true and Input.is_action_pressed("p"):
 		print("in cafeteria")
 		WorldScript.change_scene_to("res://games/pong/main.tscn")
